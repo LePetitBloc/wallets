@@ -21,7 +21,7 @@ const IndexPage = () => (
       }}
     >
       Community maintained list of <strong>masternodes coins</strong> and their
-      respective **configuration** values.
+      respective <strong>configuration</strong> values.
     </p>
     <Masternodes list={list} />
   </div>
