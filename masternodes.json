@@ -14,8 +14,7 @@
     "symbol": "XZC",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Dash": {
     "parent": "Bitcoin",
@@ -32,8 +31,10 @@
     "symbol": "DASH",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": [
+      "lepetitbloc/dashd",
+      "dashpay/dashd"
+    ]
   },
   "PIVX": {
     "parent": "Dash",
@@ -50,8 +51,7 @@
     "symbol": "PIVX",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Sparks": {
     "parent": "Dash",
@@ -68,8 +68,9 @@
     "symbol": "SPK",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": [
+      "lepetitbloc/Sparksd"
+    ]
   },
   "Goacoin": {
     "parent": "Dash",
@@ -86,8 +87,9 @@
     "symbol": "GOA",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": [
+      "lepetitbloc/goacoind"
+    ]
   },
   "Omega": {
     "parent": "Dash",
@@ -104,8 +106,7 @@
     "symbol": "OMEGA",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Saros": {
     "parent": "Dash",
@@ -122,8 +123,7 @@
     "symbol": "SAROS",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Shekel": {
     "parent": "PIVX",
@@ -140,8 +140,7 @@
     "symbol": "JEW",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Northern": {
     "parent": "PIVX",
@@ -158,8 +157,7 @@
     "symbol": "NORT",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Vantaur": {
     "parent": "Novacoin",
@@ -176,8 +174,7 @@
     "symbol": "VTAR",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Artax": {
     "parent": "Novacoin",
@@ -194,8 +191,9 @@
     "symbol": "ARTX",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": [
+      "lepetitbloc/artaxd"
+    ]
   },
   "Tokugawa": {
     "parent": "Novacoin",
@@ -212,8 +210,7 @@
     "symbol": "TOK",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Peercoin": {
     "parent": "Bitcoin",
@@ -230,8 +227,7 @@
     "symbol": "PPC",
     "masternode": false,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": []
   },
   "Novacoin": {
     "parent": "Peercoin",
@@ -248,7 +244,25 @@
     "symbol": "NVC",
     "masternode": false,
     "proofType": "PoS/PoW",
-    "image": "",
-    "imageSrc": ""
+    "images": []
+  },
+  "Bitcoin": {
+    "parent": null,
+    "walletSrc": "https://github.com/bitcoin/bitcoin",
+    "baseBinary": "bitcoin",
+    "basedir": ".bitcoin/",
+    "configFile": "bitcoin.conf",
+    "mainnetPort": 8333,
+    "mainRpcPort": 8332,
+    "testnetPort": 18333,
+    "testnetRpcPort": 18332,
+    "requiredTokens": null,
+    "bdbVersion": "4.8.30.NC",
+    "symbol": "NVC",
+    "masternode": false,
+    "proofType": "PoW",
+    "images": [
+      "kylemanna/bitcoind"
+    ]
   }
 }
