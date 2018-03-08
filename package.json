@@ -1,0 +1,26 @@
+{
+  "name": "masternodes",
+  "version": "1.0.0",
+  "description": "Masternodes coins configuration listing",
+  "main": "masternodes.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LePetitBloc/masternodes.git"
+  },
+  "keywords": [
+    "masternode",
+    "docker",
+    "port",
+    "rpc",
+    "container"
+  ],
+  "author": "lutangar <joh\tan@lepetitbloc.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LePetitBloc/masternodes/issues"
+  },
+  "homepage": "https://github.com/LePetitBloc/masternodes#readme"
+}
