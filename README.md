@@ -1,5 +1,5 @@
 # Masternodes
-Open masternodes list with configuration details and ready to deploy images.
+Open masternodes map with configuration details and ready to deploy images.
 
 ## Data structure
 ```
