@@ -1,5 +1,7 @@
-# Masternodes
-Open masternodes map with configuration details and ready to deploy images.
+# Wallets
+Cryptocurrencies core wallets configuration map in json, with ready to deploy images.
+
+> This map is strongly focused on **technicals details** and **masternodes** coins.
 
 ## Data structure
 ```
@@ -29,32 +31,32 @@ Open masternodes map with configuration details and ready to deploy images.
 
 ### Javascript
 ```
-npm install --save masternodes
+npm install --save wallets
 ```
 
 Either on **node** or the **browser** (with `webpack`) it get as simple as this:
 
 **ES5**
 ```
-const masternodes = require('masternodes');
+const wallets = require('wallets');
 ```
 
 **ES6**
 ```
-import masternodes from 'masternodes';
+import wallets from 'wallets';
 ```
 
 > Since webpack >= v2.0.0, importing of JSON files will work by default.
 
 ## Contribute
 
-Feel free to:
-* add more coins to the list
+Feel free to...
+* add more wallets to the list
 * submitting an adapter for other languages (Python, Ruby, etc...)
 * add **DockerHub** link to a ready to run image
 * ...
 
-by submitting a Pull Request.
+...by submitting a Pull Request.
 
 ## Licence
 MIT

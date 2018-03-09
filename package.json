@@ -1,26 +1,29 @@
 {
-  "name": "masternodes",
+  "name": "wallets",
   "version": "2.0.0",
-  "description": "Masternodes coins configuration listing",
-  "main": "masternodes.json",
+  "description": "Cryptocurrencies core wallets configuration map in json",
+  "main": "wallets.json",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LePetitBloc/masternodes.git"
+    "url": "git+https://github.com/LePetitBloc/wallets.git"
   },
   "keywords": [
     "masternode",
     "docker",
     "port",
     "rpc",
-    "container"
+    "container",
+    "wallets",
+    "dash",
+    "cryptocurrency"
   ],
-  "author": "lutangar <joh\tan@lepetitbloc.net>",
+  "author": "lutangar <johan@lepetitbloc.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LePetitBloc/masternodes/issues"
+    "url": "https://github.com/LePetitBloc/wallets/issues"
   },
-  "homepage": "https://github.com/LePetitBloc/masternodes#readme"
+  "homepage": "https://github.com/LePetitBloc/wallets#readme"
 }
