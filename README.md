@@ -1,4 +1,4 @@
-# Wallets
+# wallets.json
 Cryptocurrencies core wallets configuration map in json, with ready to deploy images.
 
 > This map is strongly focused on **technicals details** and **masternodes** coins.
@@ -31,19 +31,19 @@ Cryptocurrencies core wallets configuration map in json, with ready to deploy im
 
 ### Javascript
 ```
-npm install --save wallets
+npm install --save wallets.json
 ```
 
 Either on **node** or the **browser** (with `webpack`) it get as simple as this:
 
 **ES5**
 ```
-const wallets = require('wallets');
+const wallets = require('wallets.json');
 ```
 
 **ES6**
 ```
-import wallets from 'wallets';
+import wallets from 'wallets.json';
 ```
 
 > Since webpack >= v2.0.0, importing of JSON files will work by default.
