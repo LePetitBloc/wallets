@@ -7,11 +7,11 @@ import {
   SortIndicator,
 } from 'react-virtualized'
 import 'react-virtualized/styles.css' // only needs to be imported once
-import './Masternodes.css'
+import './Wallets.css'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 
-export default class Masternodes extends React.PureComponent {
+export default class Wallets extends React.PureComponent {
   static propTypes = {
     list: PropTypes.instanceOf(Immutable.List).isRequired,
   }
@@ -130,6 +130,19 @@ export default class Masternodes extends React.PureComponent {
                 style={{ textAlign: 'center' }}
               />
             )}
+            <Column
+                label="Docker"
+                dataKey="images"
+                width={200}
+                headerStyle={{ textAlign: 'center' }}
+                style={{ textAlign: 'center' }}
+                cellRenderer={({ cellData }) => (
+                    cellData.size > 0 &&
+                      <a href={`https://hub.docker.com/r/${cellData.get(0)}/`} target="_blank" title={cellData.get(0)}>
+                          {cellData.get(0)}
+                      </a>
+                )}
+            />
           </Table>
         )}
       </AutoSizer>

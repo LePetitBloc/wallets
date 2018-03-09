@@ -8,23 +8,24 @@ import './index.css'
 const TemplateWrapper = ({ children }) => (
   <div style={{ height: '100%' }}>
     <GitHubForkRibbon
-      href="//github.com/lepetitbloc/masternodes"
+      href="//github.com/lepetitbloc/wallets"
       target="_blank"
       position="right"
     >
       Fork me on GitHub
     </GitHubForkRibbon>
     <Helmet
-      title="Masternodes coins - Wallet source, information and configurations values"
+      title="Cryptocurrencies core wallets - Wallet source, information and configurations values"
       meta={[
         {
           name: 'description',
-          content: 'List of masternode coins and their configurations values',
+          content:
+            'Cryptocurrencies core wallets configuration map in json, with ready to deploy images. This map is strongly focused on technicals details and masternodes coins',
         },
         {
           name: 'keywords',
           content:
-            'masternode, masternodes, MN, MNs, Dash, PIVX, ZXC, Zerocoin',
+            'cryptocurrency, wallets, masternode, masternodes, MN, MNs, Dash, PIVX, ZXC, Zerocoin',
         },
       ]}
     >

@@ -21,7 +21,7 @@ const Header = () => (
             textDecoration: 'none',
           }}
         >
-          Masternodes
+          Wallets
         </Link>
       </h1>
     </div>

@@ -3,5 +3,5 @@ module.exports = {
     title: 'Gatsby Default Starter',
   },
   plugins: ['gatsby-plugin-react-helmet'],
-  pathPrefix: `/masternodes`,
+  pathPrefix: `/wallets`,
 };
