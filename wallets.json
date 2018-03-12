@@ -114,7 +114,7 @@
     "baseBinary": "saros",
     "basedir": ".saroscore/",
     "configFile": "saros.conf",
-    "mainnetPort": 9992,
+    "mainnetPort": 8992,
     "mainRpcPort": 9891,
     "testnetPort": 19992,
     "testnetRpcPort": 19891,
