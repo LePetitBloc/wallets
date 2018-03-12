@@ -258,11 +258,30 @@
     "testnetRpcPort": 18332,
     "requiredTokens": null,
     "bdbVersion": "4.8.30.NC",
-    "symbol": "NVC",
+    "symbol": "BTC",
     "masternode": false,
     "proofType": "PoW",
     "images": [
       "kylemanna/bitcoind"
+    ]
+  },
+  "Crowdcoin": {
+    "parent": "Dash",
+    "walletSrc": "https://github.com/crowdcoinChain/Crowdcoin",
+    "baseBinary": "crowdcoin",
+    "basedir": ".crowdcoincore/",
+    "configFile": "crowdcoin.conf",
+    "mainnetPort": 12875,
+    "mainRpcPort": 11998,
+    "testnetPort": 13845,
+    "testnetRpcPort": 19998,
+    "requiredTokens": 1000,
+    "bdbVersion": "4.8.30.NC",
+    "symbol": "CRC",
+    "masternode": true,
+    "proofType": "PoW",
+    "images": [
+      "lepetitbloc/crowdcoind"
     ]
   }
 }
