@@ -14,7 +14,8 @@
     "symbol": "XZC",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Dash": {
     "parent": "Bitcoin",
@@ -34,7 +35,8 @@
     "images": [
       "lepetitbloc/dashd",
       "dashpay/dashd"
-    ]
+    ],
+    "announcement": ""
   },
   "PIVX": {
     "parent": "Dash",
@@ -51,7 +53,8 @@
     "symbol": "PIVX",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Sparks": {
     "parent": "Dash",
@@ -70,7 +73,8 @@
     "proofType": "",
     "images": [
       "lepetitbloc/Sparksd"
-    ]
+    ],
+    "announcement": ""
   },
   "Goacoin": {
     "parent": "Dash",
@@ -89,7 +93,8 @@
     "proofType": "",
     "images": [
       "lepetitbloc/goacoind"
-    ]
+    ],
+    "announcement": ""
   },
   "Omega": {
     "parent": "Dash",
@@ -106,7 +111,8 @@
     "symbol": "OMEGA",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Saros": {
     "parent": "Dash",
@@ -123,7 +129,8 @@
     "symbol": "SAROS",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Shekel": {
     "parent": "PIVX",
@@ -140,7 +147,8 @@
     "symbol": "JEW",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Northern": {
     "parent": "PIVX",
@@ -157,7 +165,8 @@
     "symbol": "NORT",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Vantaur": {
     "parent": "Novacoin",
@@ -174,7 +183,8 @@
     "symbol": "VTAR",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Artax": {
     "parent": "Novacoin",
@@ -193,7 +203,8 @@
     "proofType": "",
     "images": [
       "lepetitbloc/artaxd"
-    ]
+    ],
+    "announcement": ""
   },
   "Tokugawa": {
     "parent": "Novacoin",
@@ -210,7 +221,8 @@
     "symbol": "TOK",
     "masternode": true,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Peercoin": {
     "parent": "Bitcoin",
@@ -227,7 +239,8 @@
     "symbol": "PPC",
     "masternode": false,
     "proofType": "",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Novacoin": {
     "parent": "Peercoin",
@@ -244,7 +257,8 @@
     "symbol": "NVC",
     "masternode": false,
     "proofType": "PoS/PoW",
-    "images": []
+    "images": [],
+    "announcement": ""
   },
   "Bitcoin": {
     "parent": null,
@@ -263,7 +277,8 @@
     "proofType": "PoW",
     "images": [
       "kylemanna/bitcoind"
-    ]
+    ],
+    "announcement": ""
   },
   "Crowdcoin": {
     "parent": "Dash",
@@ -282,6 +297,43 @@
     "proofType": "PoW",
     "images": [
       "lepetitbloc/crowdcoind"
-    ]
+    ],
+    "announcement": ""
+  },
+  "XUVCoin": {
+    "parent": "Novacoin",
+    "walletSrc": "https://github.com/XUVCoin/XUVCoin",
+    "baseBinary": "XUV",
+    "basedir": ".XUV/",
+    "configFile": "XUV.conf",
+    "mainnetPort": 19117,
+    "mainRpcPort": 19116,
+    "testnetPort": 20114,
+    "testnetRpcPort": 20115,
+    "requiredTokens": 3000,
+    "bdbVersion": "5.3.28.NC",
+    "symbol": "XUV",
+    "masternode": true,
+    "proofType": "PoS",
+    "images": [],
+    "announcement": "https://bitcointalk.org/index.php?topic=2503410.0"
+  },
+  "CRAVE": {
+    "parent": "PIVX",
+    "walletSrc": "https://github.com/Crave-Project/Crave-NG",
+    "baseBinary": "crave",
+    "basedir": ".crave/",
+    "configFile": "crave.conf",
+    "mainnetPort": 48882,
+    "mainRpcPort": 48883,
+    "testnetPort": 48884,
+    "testnetRpcPort": 48885,
+    "requiredTokens": 5000,
+    "bdbVersion": "4.8.30.NC",
+    "symbol": "CRAVE",
+    "masternode": true,
+    "proofType": "PoS",
+    "images": [],
+    "announcement": "https://bitcointalk.org/index.php?topic=1964765.0"
   }
 }
