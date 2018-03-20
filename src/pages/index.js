@@ -10,7 +10,7 @@ const list = Immutable.fromJS(
     config: `${walletsMap[key].basedir}${walletsMap[key].configFile}`,
   }))
 )
-console.log(list);
+
 const IndexPage = () => (
   <div style={{ height: '100%' }}>
     <p
