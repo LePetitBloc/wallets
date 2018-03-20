@@ -48,15 +48,5 @@ import wallets from 'wallets.json';
 
 > Since webpack >= v2.0.0, importing of JSON files will work by default.
 
-## Contribute
-
-Feel free to...
-* add more wallets to the list
-* submitting an adapter for other languages (Python, Ruby, etc...)
-* add **DockerHub** link to a ready to run image
-* ...
-
-...by submitting a Pull Request.
-
 ## Licence
 MIT
