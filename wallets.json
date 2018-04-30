@@ -15,7 +15,9 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Dash": {
     "parent": "Bitcoin",
@@ -36,7 +38,9 @@
       "lepetitbloc/dashd",
       "dashpay/dashd"
     ],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "PIVX": {
     "parent": "Dash",
@@ -54,7 +58,9 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Sparks": {
     "parent": "Dash",
@@ -74,7 +80,9 @@
     "images": [
       "lepetitbloc/Sparksd"
     ],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Goacoin": {
     "parent": "Dash",
@@ -94,7 +102,9 @@
     "images": [
       "lepetitbloc/goacoind"
     ],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Omega": {
     "parent": "Dash",
@@ -112,7 +122,9 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Saros": {
     "parent": "Dash",
@@ -130,7 +142,9 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Shekel": {
     "parent": "PIVX",
@@ -148,7 +162,9 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Northern": {
     "parent": "PIVX",
@@ -184,11 +200,13 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Artax": {
     "parent": "Novacoin",
-    "walletSrc": "https://github.com/Artax-Project/Artax",
+    "walletSrc": "https://github.com/Artax-Project/Artax/",
     "baseBinary": "artax",
     "basedir": ".Artax/",
     "configFile": "Artax.conf",
@@ -196,15 +214,17 @@
     "mainRpcPort": 21527,
     "testnetPort": 121526,
     "testnetRpcPort": 121527,
-    "requiredTokens": 1000,
+    "requiredTokens": 2000,
     "bdbVersion": "5.3.28.NC",
-    "symbol": "ARTX",
+    "symbol": "XAX",
     "masternode": true,
     "proofType": "",
     "images": [
       "lepetitbloc/artaxd"
     ],
-    "announcement": ""
+    "announcement": "https://bitcointalk.org/index.php?topic=3267175.0",
+    "website": "https://www.artaxcoin.org/",
+    "explorers": ["https://artax.blockxplorer.info/"]
   },
   "Tokugawa": {
     "parent": "Novacoin",
@@ -222,7 +242,9 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Peercoin": {
     "parent": "Bitcoin",
@@ -240,7 +262,9 @@
     "masternode": false,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Novacoin": {
     "parent": "Peercoin",
@@ -258,7 +282,9 @@
     "masternode": false,
     "proofType": "PoS/PoW",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Bitcoin": {
     "parent": null,
@@ -278,7 +304,9 @@
     "images": [
       "kylemanna/bitcoind"
     ],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "Crowdcoin": {
     "parent": "Dash",
@@ -298,7 +326,9 @@
     "images": [
       "lepetitbloc/crowdcoind"
     ],
-    "announcement": ""
+    "announcement": "",
+    "website": null,
+    "explorers": []
   },
   "XUVCoin": {
     "parent": "Novacoin",
@@ -316,7 +346,9 @@
     "masternode": true,
     "proofType": "PoS",
     "images": [],
-    "announcement": "https://bitcointalk.org/index.php?topic=2503410.0"
+    "announcement": "https://bitcointalk.org/index.php?topic=2503410.0",
+    "website": null,
+    "explorers": []
   },
   "CRAVE": {
     "parent": "PIVX",
@@ -334,6 +366,8 @@
     "masternode": true,
     "proofType": "PoS",
     "images": [],
-    "announcement": "https://bitcointalk.org/index.php?topic=1964765.0"
+    "announcement": "https://bitcointalk.org/index.php?topic=1964765.0",
+    "website": null,
+    "explorers": []
   }
 }
