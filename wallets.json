@@ -17,7 +17,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Dash": {
     "parent": "Bitcoin",
@@ -40,7 +41,8 @@
     ],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "PIVX": {
     "parent": "Dash",
@@ -60,7 +62,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Sparks": {
     "parent": "Dash",
@@ -82,7 +85,8 @@
     ],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Goacoin": {
     "parent": "Dash",
@@ -104,7 +108,8 @@
     ],
     "announcement": "https://bitcointalk.org/index.php?topic=2593523.0",
     "website": "https://goaco.in/",
-    "explorers": ["https://goacoin.be/"]
+    "explorers": ["https://goacoin.be/"],
+    "nodes": []
   },
   "Omega": {
     "parent": "Dash",
@@ -124,7 +129,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Saros": {
     "parent": "Dash",
@@ -144,7 +150,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Shekel": {
     "parent": "PIVX",
@@ -164,7 +171,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Northern": {
     "parent": "PIVX",
@@ -182,7 +190,8 @@
     "masternode": true,
     "proofType": "",
     "images": [],
-    "announcement": ""
+    "announcement": "",
+    "nodes": []
   },
   "Vantaur": {
     "parent": "Novacoin",
@@ -202,7 +211,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Artax": {
     "parent": "Dash",
@@ -224,7 +234,29 @@
     ],
     "announcement": "https://bitcointalk.org/index.php?topic=3267175.0",
     "website": "https://www.artaxcoin.org/",
-    "explorers": ["https://artax.blockxplorer.info/"]
+    "explorers": ["https://artax.blockxplorer.info/"],
+    "nodes": [
+      "45.32.233.39:21527",
+      "144.202.74.29:21527",
+      "199.247.0.99:21527",
+      "35.185.28.120:21527",
+      "45.32.22.238:21527",
+      "140.82.60.29:21527",
+      "108.61.252.205:21527",
+      "45.63.82.193:21527",
+      "46.101.48.90:21527",
+      "132.148.139.228:21527",
+      "121.63.252.178:21512",
+      "199.247.6.97:21527",
+      "173.208.188.35:21527",
+      "52.47.168.149:21527",
+      "144.202.36.100:21544",
+      "207.148.0.96:21527",
+      "54.37.72.144:21532",
+      "104.207.143.189:21527",
+      "165.227.87.76:21529",
+      "207.154.194.110:21527"
+    ]
   },
   "Tokugawa": {
     "parent": "Novacoin",
@@ -244,7 +276,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Peercoin": {
     "parent": "Bitcoin",
@@ -264,7 +297,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Novacoin": {
     "parent": "Peercoin",
@@ -284,7 +318,8 @@
     "images": [],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Bitcoin": {
     "parent": null,
@@ -306,7 +341,8 @@
     ],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "Crowdcoin": {
     "parent": "Dash",
@@ -328,7 +364,8 @@
     ],
     "announcement": "",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "XUVCoin": {
     "parent": "Novacoin",
@@ -348,7 +385,8 @@
     "images": [],
     "announcement": "https://bitcointalk.org/index.php?topic=2503410.0",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   },
   "CRAVE": {
     "parent": "PIVX",
@@ -368,6 +406,7 @@
     "images": [],
     "announcement": "https://bitcointalk.org/index.php?topic=1964765.0",
     "website": null,
-    "explorers": []
+    "explorers": [],
+    "nodes": []
   }
 }
