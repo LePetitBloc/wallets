@@ -102,9 +102,9 @@
     "images": [
       "lepetitbloc/goacoind"
     ],
-    "announcement": "",
-    "website": null,
-    "explorers": []
+    "announcement": "https://bitcointalk.org/index.php?topic=2593523.0",
+    "website": "https://goaco.in/",
+    "explorers": ["https://goacoin.be/"]
   },
   "Omega": {
     "parent": "Dash",

@@ -1,6 +1,6 @@
 {
   "name": "wallets.json",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Cryptocurrencies core wallets configuration map in json",
   "main": "wallets.json",
   "scripts": {
