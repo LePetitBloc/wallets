@@ -67,7 +67,7 @@
   },
   "Sparks": {
     "parent": "Dash",
-    "walletSrc": "https://github.com/sparkscrypto/Sparks",
+    "walletSrc": "https://github.com/SparksReborn/sparkspay",
     "baseBinary": "Sparks",
     "basedir": ".Sparks/",
     "configFile": "Sparks.conf",
@@ -81,7 +81,7 @@
     "masternode": true,
     "proofType": "",
     "images": [
-      "lepetitbloc/Sparksd"
+      "lepetitbloc/sparksd"
     ],
     "announcement": "",
     "website": null,
