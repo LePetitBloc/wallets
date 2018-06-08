@@ -1,5 +1,10 @@
 .cache
+.github
+.gitlab
+.editorconfig
+.gitattributes
 .idea
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
+SUPPORT.md
 public/
