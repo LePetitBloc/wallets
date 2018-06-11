@@ -8,7 +8,7 @@ import './index.css';
 const TemplateWrapper = ({ children }) => (
   <div style={{ height: '100%' }}>
     <Helmet
-      title="Cryptocurrencies core wallets - Wallet source, information and configurations values"
+      title="Cryptocurrencies core wallets configuration map in json"
       meta={[
         {
           name: 'description',
