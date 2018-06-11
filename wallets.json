@@ -2,6 +2,9 @@
   "Zerocoin": {
     "parent": "Bitcoin",
     "walletSrc": "https://github.com/zcoinofficial/zcoin",
+    "repository": "https://github.com/zcoinofficial/zcoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "zcoin",
     "basedir": ".zcoin",
     "configFile": "zcoin.conf",
@@ -23,6 +26,9 @@
   "Dash": {
     "parent": "Bitcoin",
     "walletSrc": "https://github.com/dashpay/dash",
+    "repository": "https://github.com/dashpay/dash",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "dash",
     "basedir": ".dashcore/",
     "configFile": "dash.conf",
@@ -47,6 +53,9 @@
   "PIVX": {
     "parent": "Dash",
     "walletSrc": "https://github.com/PIVX-Project/PIVX",
+    "repository": "https://github.com/PIVX-Project/PIVX",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "pivx",
     "basedir": ".pivx/",
     "configFile": "pivx.conf",
@@ -68,6 +77,9 @@
   "Sparks": {
     "parent": "Dash",
     "walletSrc": "https://github.com/SparksReborn/sparkspay",
+    "repository": "https://github.com/SparksReborn/sparkspay",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "Sparks",
     "basedir": ".Sparks/",
     "configFile": "Sparks.conf",
@@ -91,6 +103,9 @@
   "Goacoin": {
     "parent": "Dash",
     "walletSrc": "https://github.com/goacoincore/goacoin",
+    "repository": "https://github.com/goacoincore/goacoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "goacoin",
     "basedir": ".goacoincore/",
     "configFile": "goacoin.conf",
@@ -114,6 +129,9 @@
   "Omega": {
     "parent": "Dash",
     "walletSrc": "https://github.com/omegacoinnetwork/omegacoin",
+    "repository": "https://github.com/omegacoinnetwork/omegacoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "omegacoin",
     "basedir": ".omegacoincore/",
     "configFile": "omegacoin.conf",
@@ -135,6 +153,9 @@
   "Saros": {
     "parent": "Dash",
     "walletSrc": "https://github.com/sarospay/saros",
+    "repository": "https://github.com/sarospay/saros",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "saros",
     "basedir": ".saroscore/",
     "configFile": "saros.conf",
@@ -156,6 +177,9 @@
   "Shekel": {
     "parent": "PIVX",
     "walletSrc": "https://github.com/shekeltechnologies/wallet",
+    "repository": "https://github.com/shekeltechnologies/wallet",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "shekel",
     "basedir": ".shekel/",
     "configFile": "shekel.conf",
@@ -176,7 +200,10 @@
   },
   "Northern": {
     "parent": "PIVX",
-    "walletSrc": "https://github.com/Northerncryptodev/Northern/",
+    "walletSrc": "https://github.com/Northerncryptodev/Northern",
+    "repository": "https://github.com/Northerncryptodev/Northern",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "northern",
     "basedir": ".northern/",
     "configFile": "northern.conf",
@@ -196,6 +223,9 @@
   "Vantaur": {
     "parent": "Novacoin",
     "walletSrc": "https://github.com/vantaur/vantaur",
+    "repository": "https://github.com/vantaur/vantaur",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "vantaur",
     "basedir": ".Vantaur/",
     "configFile": "Vantaur.conf",
@@ -217,6 +247,9 @@
   "Artax": {
     "parent": "Dash",
     "walletSrc": "https://github.com/Artax-Project/Artax",
+    "repository": "https://github.com/Artax-Project/Artax",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "artax",
     "basedir": ".artaxcore/",
     "configFile": "artax.conf",
@@ -261,6 +294,9 @@
   "Tokugawa": {
     "parent": "Novacoin",
     "walletSrc": "https://github.com/TokugawaCoin/Tokugawa",
+    "repository": "https://github.com/TokugawaCoin/Tokugawa",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "Tokugawa",
     "basedir": ".Tokugawa/",
     "configFile": "Tokugawa.conf",
@@ -282,6 +318,9 @@
   "Peercoin": {
     "parent": "Bitcoin",
     "walletSrc": "https://github.com/peercoin/peercoin",
+    "repository": "https://github.com/peercoin/peercoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "peercoin",
     "basedir": ".peercoin/",
     "configFile": "peercoin.conf",
@@ -303,6 +342,9 @@
   "Novacoin": {
     "parent": "Peercoin",
     "walletSrc": "https://github.com/novacoin-project/novacoin",
+    "repository": "https://github.com/novacoin-project/novacoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "novacoin",
     "basedir": ".novacoin/",
     "configFile": "novacoin.conf",
@@ -324,6 +366,9 @@
   "Bitcoin": {
     "parent": null,
     "walletSrc": "https://github.com/bitcoin/bitcoin",
+    "repository": "https://github.com/bitcoin/bitcoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "bitcoin",
     "basedir": ".bitcoin/",
     "configFile": "bitcoin.conf",
@@ -347,6 +392,9 @@
   "Crowdcoin": {
     "parent": "Dash",
     "walletSrc": "https://github.com/crowdcoinChain/Crowdcoin",
+    "repository": "https://github.com/crowdcoinChain/Crowdcoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "crowdcoin",
     "basedir": ".crowdcoincore/",
     "configFile": "crowdcoin.conf",
@@ -383,6 +431,9 @@
   "XUVCoin": {
     "parent": "Novacoin",
     "walletSrc": "https://github.com/XUVCoin/XUVCoin",
+    "repository": "https://github.com/XUVCoin/XUVCoin",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "XUV",
     "basedir": ".XUV/",
     "configFile": "XUV.conf",
@@ -404,6 +455,9 @@
   "CRAVE": {
     "parent": "PIVX",
     "walletSrc": "https://github.com/Crave-Project/Crave-NG",
+    "repository": "https://github.com/Crave-Project/Crave-NG",
+    "branch": "master",
+    "tag": "",
     "baseBinary": "crave",
     "basedir": ".crave/",
     "configFile": "crave.conf",
