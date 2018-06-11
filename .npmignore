@@ -4,6 +4,7 @@
 .editorconfig
 .gitattributes
 .idea
+src/
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 SUPPORT.md

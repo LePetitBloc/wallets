@@ -1,27 +1,27 @@
 {
   "name": "wallets.json",
-  "version": "2.4.9",
+  "version": "2.4.10",
   "description": "Cryptocurrencies core wallets configuration map in json",
   "main": "wallets.json",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "format": "prettier --trailing-comma es5 --single-quote --print-width 120 --write \"src/**/*.js\"",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
-    "gatsby": "^1.9.223",
-    "gatsby-link": "^1.6.38",
-    "gatsby-plugin-react-helmet": "^2.0.6",
+    "gatsby": "^1.9.270",
+    "gatsby-link": "^1.6.44",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gh-pages": "^1.2.0",
     "immutable": "^3.8.2",
     "lodash.isnumber": "^3.0.3",
     "material-design-icons": "^3.0.1",
+    "prettier": "^1.13.5",
     "react-github-fork-ribbon": "^0.5.1",
     "react-helmet": "^5.2.0",
-    "react-virtualized": "^9.18.5",
-    "gh-pages": "^1.1.0",
-    "prettier": "^1.11.1"
+    "react-virtualized": "^9.19.1"
   },
   "repository": {
     "type": "git",
