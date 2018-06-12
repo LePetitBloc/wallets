@@ -155,7 +155,7 @@ export default class Wallets extends React.PureComponent {
                 rowData.images.length > 0 ? (
                   <DockerHubLink image={rowData.images[0]} />
                 ) : (
-                  <DockerHubLink image={`lepetitbloc/${rowData.baseBinary}d`} />
+                  <DockerHubLink image={`lepetitbloc/${rowData.baseBinary.toLowerCase()}d`} />
                 )
               }
             />
