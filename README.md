@@ -8,7 +8,9 @@ Cryptocurrencies core wallets configuration map in json, with ready to deploy im
 ...
   "Dash": {
     "parent": "Bitcoin",
-    "walletSrc": "https://github.com/dashpay/dash",
+    "repository": "https://github.com/dashpay/dash",
+    "branch": null,
+    "tag": "v0.12.2.3",
     "baseBinary": "dash",
     "basedir": ".dashcore/",
     "configFile": "dash.conf",
@@ -21,8 +23,14 @@ Cryptocurrencies core wallets configuration map in json, with ready to deploy im
     "symbol": "DASH",
     "masternode": true,
     "proofType": "",
-    "image": "",
-    "imageSrc": ""
+    "images": [
+      "lepetitbloc/dashd",
+      "dashpay/dashd"
+    ],
+    "announcement": "",
+    "website": "https://www.dash.org/",
+    "explorers": [],
+    "nodes": []
   },
 ...
 ```

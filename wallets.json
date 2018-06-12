@@ -27,8 +27,8 @@
     "parent": "Bitcoin",
     "walletSrc": "https://github.com/dashpay/dash",
     "repository": "https://github.com/dashpay/dash",
-    "branch": "master",
-    "tag": "",
+    "branch": null,
+    "tag": "v0.12.2.3",
     "baseBinary": "dash",
     "basedir": ".dashcore/",
     "configFile": "dash.conf",
@@ -46,7 +46,7 @@
       "dashpay/dashd"
     ],
     "announcement": "",
-    "website": null,
+    "website": "https://www.dash.org/",
     "explorers": [],
     "nodes": []
   },
