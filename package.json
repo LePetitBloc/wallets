@@ -8,7 +8,7 @@
     "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --trailing-comma es5 --single-quote --print-width 120 --write \"src/**/*.js\"",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "prepublishOnly": "git push origin HEAD"
   },
   "devDependencies": {
     "gatsby": "^1.9.270",
