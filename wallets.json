@@ -79,7 +79,7 @@
     "walletSrc": "https://github.com/SparksReborn/sparkspay",
     "repository": "https://github.com/SparksReborn/sparkspay",
     "branch": null,
-    "tag": "v0.12.3.1",
+    "tag": "v0.12.3.2",
     "baseBinary": "sparks",
     "basedir": ".sparkscore/",
     "configFile": "sparks.conf",
