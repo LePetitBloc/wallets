@@ -56,6 +56,12 @@ import wallets from 'wallets.json';
 
 > Since webpack >= v2.0.0, importing of JSON files will work by default.
 
+### Ansible
+Ansible can natively read json file with the `--extra-vars` flag:
+```
+ansible-playbook install.yml --extra-vars "@node_modules/wallets.json/wallets.json"
+```
+
 ## Contributing
 See the [CONTRIBUTING](CONTRIBUTING.md) file.
 
