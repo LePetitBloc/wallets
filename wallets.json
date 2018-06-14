@@ -245,7 +245,7 @@
     "nodes": []
   },
   "Artax": {
-    "parent": "Dash",
+    "parent": "PIVX",
     "walletSrc": "https://github.com/artaxcommittee/Artax",
     "repository": "https://github.com/artaxcommittee/Artax",
     "branch": null,
@@ -292,7 +292,7 @@
     ]
   },
   "Tokugawa": {
-    "parent": "Novacoin",
+    "parent": "PIVX",
     "walletSrc": "https://github.com/TokugawaCoin/Tokugawa",
     "repository": "https://github.com/TokugawaCoin/Tokugawa",
     "branch": "master",
