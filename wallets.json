@@ -394,7 +394,7 @@
     "walletSrc": "https://github.com/crowdcoinChain/Crowdcoin",
     "repository": "https://github.com/crowdcoinChain/Crowdcoin",
     "branch": null,
-    "tag": "1.2.0",
+    "tag": "1.1.0",
     "baseBinary": "crowdcoin",
     "basedir": ".crowdcoincore/",
     "configFile": "crowdcoin.conf",
