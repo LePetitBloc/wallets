@@ -221,7 +221,7 @@
     "nodes": []
   },
   "Vantaur": {
-    "parent": "PIVX",
+    "parent": "Darkcoin",
     "walletSrc": "https://github.com/vantaur/vantaur",
     "repository": "https://github.com/vantaur/vantaur",
     "branch": "V1.1.0",
