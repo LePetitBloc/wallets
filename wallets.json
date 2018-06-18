@@ -429,7 +429,7 @@
     ]
   },
   "XUVCoin": {
-    "parent": "PIVX",
+    "parent": "Darkcoin",
     "walletSrc": "https://github.com/XUVCoin/XUVCoin",
     "repository": "https://github.com/XUVCoin/XUVCoin",
     "branch": null,
