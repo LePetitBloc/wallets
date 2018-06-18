@@ -292,7 +292,7 @@
     ]
   },
   "Tokugawa": {
-    "parent": "PIVX",
+    "parent": "Darkcoin",
     "walletSrc": "https://github.com/TokugawaCoin/Tokugawa",
     "repository": "https://github.com/TokugawaCoin/Tokugawa",
     "branch": null,
