@@ -151,13 +151,7 @@ export default class Wallets extends React.PureComponent {
               headerStyle={{ textAlign: 'center' }}
               style={{ textAlign: 'center' }}
               cellDataGetter={rowDataGetter}
-              cellRenderer={({ rowData }) =>
-                rowData.images.length > 0 ? (
-                  <DockerHubLink image={rowData.images[0]} />
-                ) : (
-                  <DockerHubLink image={`lepetitbloc/${rowData.baseBinary.toLowerCase()}d`} />
-                )
-              }
+              cellRenderer={({ rowData }) => rowData.images.length > 0 && <DockerHubLink image={rowData.images[0]} />}
             />
           </Table>
         )}
