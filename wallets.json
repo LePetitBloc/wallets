@@ -68,7 +68,7 @@
     "symbol": "PIVX",
     "masternode": true,
     "proofType": "",
-    "images": ["lepetitbloc/dashd"],
+    "images": ["lepetitbloc/pivxd"],
     "announcement": "",
     "website": null,
     "explorers": [],
