@@ -55,7 +55,7 @@
     "walletSrc": "https://github.com/PIVX-Project/PIVX",
     "repository": "https://github.com/PIVX-Project/PIVX",
     "branch": null,
-    "tag": "v3.1.0.3",
+    "tag": "v3.1.1",
     "baseBinary": "pivx",
     "basedir": ".pivx/",
     "configFile": "pivx.conf",
