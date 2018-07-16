@@ -4,7 +4,7 @@
     "walletSrc": "https://github.com/zcoinofficial/zcoin",
     "repository": "https://github.com/zcoinofficial/zcoin",
     "branch": null,
-    "tag": "v0.13.6.3",
+    "tag": "v0.13.6.6",
     "baseBinary": "zcoin",
     "basedir": ".zcoin/",
     "configFile": "zcoin.conf",
