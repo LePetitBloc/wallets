@@ -7,9 +7,20 @@ const writeFile = util.promisify(require('fs').writeFile);
   (async function() {
     let updates = await checkAllForUpdates();
     await updateFile(updates);
+    console.log(buildCommitMessage(updates));
   })().catch(err => {
     console.error(err);
   });
+
+function buildCommitMessage(updates) {
+  let commitMessage = 'Update wallet.json\n\n';
+  updates.forEach((update) => {
+    if(update) {
+      commitMessage += update.toString() + '\n';
+    }
+  });
+  return  commitMessage;
+}
 
 async function updateFile(updates) {
   updates.forEach(update => {
