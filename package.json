@@ -39,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/LePetitBloc/wallets/issues"
   },
-  "homepage": "https://github.com/LePetitBloc/wallets#readme"
+  "homepage": "https://github.com/LePetitBloc/wallets#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0"
+  }
 }
