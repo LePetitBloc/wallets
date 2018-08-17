@@ -2,7 +2,6 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const versionNumberRegexp = /([vV])?([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2}))?(?:\.([0-9]{1,2}))?[\n|\s]?/g;
 const wallets = require('./wallets');
-const updates = [];
 
 const pendingUpdates = [];
 for (let property in wallets) {
