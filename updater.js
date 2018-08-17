@@ -4,11 +4,23 @@ const versionNumberRegexp = /v([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9
 const wallets = require('./wallets');
 const updates = [];
 
-wallets.Zerocoin.identifier = 'Zerocoin';
+const pendingUpdates = [];
+for (let property in wallets) {
+  if(wallets.hasOwnProperty(property)) {
+    let wallet = wallets[property];
+    wallet.identifier = property;
 
-checkForUpdates(wallets.Zerocoin).then(() => {
-  console.log(updates[0].toString());
-});
+    pendingUpdates.push(checkForUpdates(wallet).catch(err => {
+      console.log(err);
+    }));
+  }
+}
+
+Promise.all(pendingUpdates).then((updates) => {
+    console.log(updates);
+  }
+);
+
 
 async function checkForUpdates(wallet) {
   const tags = await listRemoteTags(wallet.repository);
@@ -20,9 +32,9 @@ async function checkForUpdates(wallet) {
 
   if(versions.length > 0) {
     const targetVersion = versions[versions.length - 1];
-    updates.push(new Update(wallet.identifier,currentVersion,targetVersion));
+    return new Update(wallet.identifier,currentVersion,targetVersion);
   }
-  return true;
+  return null;
 }
 
 function findCurrentVersion(wallet) {
@@ -33,7 +45,7 @@ function findCurrentVersion(wallet) {
     }
   }
 
-  throw new Error("Can't determined current version for wallet : " + wallet.name);
+  throw new Error("Can't determined current version for wallet : " + wallet.identifier);
 }
 
 function superiorVersionsFilter(currentVersion) {
