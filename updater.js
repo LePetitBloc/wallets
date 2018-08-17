@@ -58,3 +58,15 @@ class Version {
     return "v" + this.major + "." + this.minor + "." + this.patch + "." + this.fourth;
   }
 }
+
+class Update {
+  constructor(wallet,from,to) {
+    this.wallet = wallet;
+    this.from = from;
+    this.to = to;
+  }
+
+  toString() {
+    return 'updated ' + this.wallet + 'from ' + this.from + 'to ' + this.to;
+  }
+}
