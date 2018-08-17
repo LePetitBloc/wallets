@@ -1,6 +1,6 @@
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
-const versionNumberRegexp = /v([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2})){0,1}/g;
+const versionNumberRegexp = /([vV])?([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2}))?(?:\.([0-9]{1,2}))?[\n|\s]?/g;
 const wallets = require('./wallets');
 const updates = [];
 
@@ -10,14 +10,20 @@ for (let property in wallets) {
     let wallet = wallets[property];
     wallet.identifier = property;
 
-    pendingUpdates.push(checkForUpdates(wallet).catch(err => {
-      console.log(err);
+    pendingUpdates
+      .push(checkForUpdates(wallet).catch(err => {
+      console.error(err.message);
     }));
   }
 }
 
 Promise.all(pendingUpdates).then((updates) => {
     console.log(updates);
+    updates.forEach(update => {
+      if(update) {
+        console.log(update.toString());
+      }
+    })
   }
 );
 
@@ -98,14 +104,18 @@ async function listRemoteTags(remote) {
 
 class Version {
   constructor(versionRegexpResult) {
-    this.major = parseInt(versionRegexpResult[1]);
-    this.minor = parseInt(versionRegexpResult[2]);
-    this.patch = parseInt(versionRegexpResult[3]);
-    this.fourth = versionRegexpResult[4] ? parseInt(versionRegexpResult[4]) : null;
+    this.prefix = versionRegexpResult[1] || '';
+    this.major = parseInt(versionRegexpResult[2]);
+    this.minor = parseInt(versionRegexpResult[3]);
+    this.patch = versionRegexpResult[4] ? parseInt(versionRegexpResult[4]) : null;
+    this.fourth = versionRegexpResult[5] ? parseInt(versionRegexpResult[5]) : null;
   }
 
   toString() {
-    return "v" + this.major + "." + this.minor + "." + this.patch + "." + this.fourth;
+    let string =  this.prefix + this.major + '.' + this.minor;
+    string += ((this.patch !== null ) ? '.' + this.patch : '');
+    string += ((this.fourth !== null) ? '.' +  this.fourth : '');
+    return string;
   }
 }
 
