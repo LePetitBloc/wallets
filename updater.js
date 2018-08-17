@@ -2,32 +2,39 @@ const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const versionNumberRegexp = /([vV])?([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2}))?(?:\.([0-9]{1,2}))?[\n|\s]?/g;
 const wallets = require('./wallets');
+const writeFile = util.promisify(require('fs').writeFile);
 
-const pendingUpdates = [];
-for (let property in wallets) {
-  if(wallets.hasOwnProperty(property)) {
-    let wallet = wallets[property];
-    wallet.identifier = property;
+  (async function() {
+    let updates = await checkAllForUpdates();
+    await updateFile(updates);
+  })().catch(err => {
+    console.error(err);
+  });
 
-    pendingUpdates
-      .push(checkForUpdates(wallet).catch(err => {
-      console.error(err.message);
-    }));
-  }
+async function updateFile(updates) {
+  updates.forEach(update => {
+    if(update) {
+      wallets[update.walletIdentifier].tag = update.to.toString();
+    }
+  });
+  return writeFile('./wallets.json', JSON.stringify(wallets,null, '  '));
 }
 
-Promise.all(pendingUpdates).then((updates) => {
-    console.log(updates);
-    updates.forEach(update => {
-      if(update) {
-        console.log(update.toString());
-      }
-    })
+async function checkAllForUpdates() {
+  const pendingUpdates = [];
+  for (let property in wallets) {
+    if(wallets.hasOwnProperty(property)) {
+      pendingUpdates
+        .push(checkForUpdates(wallets[property], property).catch(err => {
+          console.error(err.message);
+        }));
+    }
   }
-);
+  return Promise.all(pendingUpdates);
+}
 
 
-async function checkForUpdates(wallet) {
+async function checkForUpdates(wallet, identifier) {
   const tags = await listRemoteTags(wallet.repository);
   let versions = parseVersionsTags(tags);
   const currentVersion = findCurrentVersion(wallet);
@@ -37,7 +44,7 @@ async function checkForUpdates(wallet) {
 
   if(versions.length > 0) {
     const targetVersion = versions[versions.length - 1];
-    return new Update(wallet.identifier,currentVersion,targetVersion);
+    return new Update(identifier,currentVersion,targetVersion);
   }
   return null;
 }
