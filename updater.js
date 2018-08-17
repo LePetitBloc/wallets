@@ -1,4 +1,5 @@
-const { exec } = require("child_process");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
 const versionNumberRegexp = /v([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2})){0,1}/g;
 
 
@@ -9,6 +10,12 @@ listRemoteTags("https://github.com/dashpay/dash").then(stdout => {
 }).catch(err => {
   console.log(err);
 });
+
+function majorFilter(major) {
+  return (o) => {
+    return (o.major === major);
+  };
+}
 
 function versionsSorter(a, b) {
   if (a.major > b.major
@@ -30,18 +37,13 @@ function parseVersionsTags(tagLists) {
   return versions;
 }
 
-function listRemoteTags(remote) {
-  return new Promise((resolve, reject) => {
-    exec("git ls-remote --tags " + remote, (err, stdout, stderr) => {
-      if (typeof stdout === "string") {
-        resolve(stdout);
-      } else if (typeof stderr === "string") {
-        reject(stderr);
-      } else {
-        reject(err);
-      }
-    });
-  });
+async function listRemoteTags(remote) {
+  const {stdout, stderr} = await exec("git ls-remote --tags " + remote);
+  if (typeof stdout === "string") {
+    return stdout;
+  } else if (typeof stderr === "string") {
+    return Promise.reject(stderr);
+  }
 }
 
 class Version {
