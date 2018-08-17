@@ -1,20 +1,64 @@
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const versionNumberRegexp = /v([0-9]{1,2})\.([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2})){0,1}/g;
+const wallets = require('./wallets');
+const updates = [];
 
+wallets.Zerocoin.identifier = 'Zerocoin';
 
-listRemoteTags("https://github.com/dashpay/dash").then(stdout => {
-  const versions = parseVersionsTags(stdout);
-  versions.sort(versionsSorter);
-  console.log(versions[versions.length - 1].toString());
-}).catch(err => {
-  console.log(err);
+checkForUpdates(wallets.Zerocoin).then(() => {
+  console.log(updates[0].toString());
 });
+
+async function checkForUpdates(wallet) {
+  const tags = await listRemoteTags(wallet.repository);
+  let versions = parseVersionsTags(tags);
+  const currentVersion = findCurrentVersion(wallet);
+
+  versions = versions.filter(superiorVersionsFilter(currentVersion));
+  versions = versions.sort(versionsSorter);
+
+  if(versions.length > 0) {
+    const targetVersion = versions[versions.length - 1];
+    updates.push(new Update(wallet.identifier,currentVersion,targetVersion));
+  }
+  return true;
+}
+
+function findCurrentVersion(wallet) {
+  if(wallet.tag) {
+    let regexpResult = versionNumberRegexp.exec(wallet.tag);
+    if (regexpResult) {
+      return new Version(regexpResult);
+    }
+  }
+
+  throw new Error("Can't determined current version for wallet : " + wallet.name);
+}
 
 function majorFilter(major) {
   return (o) => {
     return (o.major === major);
   };
+}
+
+function superiorVersionsFilter(currentVersion) {
+  return (version) => {
+    if(version.major === currentVersion.major) {
+      if(version.minor > currentVersion.minor) {
+         return 1;
+      } else if(version.minor === currentVersion.minor) {
+        if(version.patch > currentVersion.patch) {
+          return 1;
+        } else if(version.patch === currentVersion.patch) {
+          if(version.fourth > currentVersion.fourth) {
+            return 1;
+          }
+        }
+      }
+    }
+    return 0;
+  }
 }
 
 function versionsSorter(a, b) {
@@ -60,13 +104,13 @@ class Version {
 }
 
 class Update {
-  constructor(wallet,from,to) {
-    this.wallet = wallet;
+  constructor(walletIdentifier,from,to) {
+    this.walletIdentifier = walletIdentifier;
     this.from = from;
     this.to = to;
   }
 
   toString() {
-    return 'updated ' + this.wallet + 'from ' + this.from + 'to ' + this.to;
+    return 'updated ' + this.walletIdentifier + ' from ' + this.from.toString() + ' to ' + this.to.toString();
   }
 }
