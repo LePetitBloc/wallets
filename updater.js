@@ -36,12 +36,6 @@ function findCurrentVersion(wallet) {
   throw new Error("Can't determined current version for wallet : " + wallet.name);
 }
 
-function majorFilter(major) {
-  return (o) => {
-    return (o.major === major);
-  };
-}
-
 function superiorVersionsFilter(currentVersion) {
   return (version) => {
     if(version.major === currentVersion.major) {
