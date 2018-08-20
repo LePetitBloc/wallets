@@ -16,6 +16,9 @@ const writeFile = util.promisify(require('fs').writeFile);
   });
 
 async function addDeployKey() {
+  if(!process.env.deploy_key) {
+    throw new Error('Environment variable deploy_key is not set - cannot send modifications to server.');
+  }
   const {stdout, stderr} = await exec('eval "$(ssh-agent -s)" && echo $deploy_key | ssh-add -');
   console.log(stdout);
   console.log(stderr);
