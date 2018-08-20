@@ -5,16 +5,19 @@ const versionNumberRegexp = /([vV])?([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2}))
 const wallets = require('./wallets');
 const writeFile = util.promisify(require('fs').writeFile);
 
-  (async function() {
+(async function() {
+  try {
+    console.log("--- Wallet updater launched at " + new Date() + "--");
     let updates = await checkAllForUpdates();
     await updateFile(updates);
     await addDeployKey();
     await addChanges();
     await commit(buildCommitMessage(updates));
     await push()
-  })().catch(err => {
-    console.error(err);
-  });
+  } catch (e) {
+    console.error(e);
+  }
+})();
 
 async function addDeployKey() {
   if(!process.env.deploy_key) {
@@ -26,29 +29,20 @@ async function addDeployKey() {
 }
 
 async function addChanges() {
-  const {stdout, stderr} = await exec('git add wallets.json');
+  const { stdout } = await exec('git add wallets.json');
   console.log(stdout);
-  if(stderr) {
-    throw  new Error(stderr);
-  }
 }
 
 async function commit(message) {
-  const {stdout, stderr} = await exec('git commit -m "' + message +'"');
+  const { stdout } = await exec('git commit -m "' + message +'"');
   console.log(stdout);
-  if(stderr) {
-    throw  new Error(stderr);
-  }
 }
 
 async function push() {
-  const {stdout, stderr} = await exec('git push origin HEAD');
-  if(stderr) {
-    throw new Error(stderr);
-  } else {
-    console.log(stdout);
-    console.log('Updated wallet.json successfully')
-  }
+  const { stderr } = await exec('git push origin HEAD');
+  console.log(stderr);
+  console.log('Updated wallet.json successfully')
+
 }
 
 function buildCommitMessage(updates) {
@@ -58,7 +52,7 @@ function buildCommitMessage(updates) {
       commitMessage += update.toString() + '\n';
     }
   });
-  return  commitMessage;
+  return commitMessage;
 }
 
 async function updateFile(updates) {
@@ -74,10 +68,7 @@ async function checkAllForUpdates() {
   const pendingUpdates = [];
   for (let property in wallets) {
     if(wallets.hasOwnProperty(property)) {
-      pendingUpdates
-        .push(checkForUpdates(wallets[property], property).catch(err => {
-          console.error(err.message);
-        }));
+      pendingUpdates.push(checkForUpdates(wallets[property], property));
     }
   }
   return Promise.all(pendingUpdates);
@@ -106,7 +97,7 @@ function findCurrentVersion(wallet) {
     }
   }
 
-  throw new Error("Can't determined current version for wallet : " + wallet.identifier);
+  console.warn("Can't determined current version for wallet : " + wallet.identifier);
 }
 
 function superiorVersionsFilter(currentVersion) {
@@ -149,12 +140,8 @@ function parseVersionsTags(tagLists) {
 }
 
 async function listRemoteTags(remote) {
-  const {stdout, stderr} = await exec("git ls-remote --tags " + remote);
-  if (typeof stdout === "string") {
-    return stdout;
-  } else if (typeof stderr === "string") {
-    return Promise.reject(stderr);
-  }
+  const {stdout} = await exec("git ls-remote --tags " + remote);
+  return stdout;
 }
 
 class Version {
