@@ -1,3 +1,4 @@
+require('dotenv').config();
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const versionNumberRegexp = /([vV])?([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2}))?(?:\.([0-9]{1,2}))?[\n|\s]?/g;
@@ -7,10 +8,36 @@ const writeFile = util.promisify(require('fs').writeFile);
   (async function() {
     let updates = await checkAllForUpdates();
     await updateFile(updates);
-    console.log(buildCommitMessage(updates));
+    await addDeployKey();
+    await commit(buildCommitMessage(updates));
+    await push()
   })().catch(err => {
     console.error(err);
   });
+
+async function addDeployKey() {
+  const {stdout, stderr} = await exec('eval "$(ssh-agent -s)" && echo $deploy_key | ssh-add -');
+  console.log(stdout);
+  console.log(stderr);
+}
+
+async function commit(message) {
+  const {stdout, stderr} = await exec('git commit -m "' + message +'"');
+  console.log(stdout);
+  if(stderr) {
+    throw  new Error(stderr);
+  }
+}
+
+async function push() {
+  const {stdout, stderr} = await exec('git push origin HEAD');
+  if(stderr) {
+    throw new Error(stderr);
+  } else {
+    console.log(stdout);
+    console.log('Updated wallet.json successfully')
+  }
+}
 
 function buildCommitMessage(updates) {
   let commitMessage = 'Update wallet.json\n\n';
@@ -43,7 +70,6 @@ async function checkAllForUpdates() {
   }
   return Promise.all(pendingUpdates);
 }
-
 
 async function checkForUpdates(wallet, identifier) {
   const tags = await listRemoteTags(wallet.repository);
