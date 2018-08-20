@@ -9,6 +9,7 @@ const writeFile = util.promisify(require('fs').writeFile);
     let updates = await checkAllForUpdates();
     await updateFile(updates);
     await addDeployKey();
+    await addChanges();
     await commit(buildCommitMessage(updates));
     await push()
   })().catch(err => {
@@ -22,6 +23,14 @@ async function addDeployKey() {
   const {stdout, stderr} = await exec('eval "$(ssh-agent -s)" && echo $deploy_key | ssh-add -');
   console.log(stdout);
   console.log(stderr);
+}
+
+async function addChanges() {
+  const {stdout, stderr} = await exec('git add wallets.json');
+  console.log(stdout);
+  if(stderr) {
+    throw  new Error(stderr);
+  }
 }
 
 async function commit(message) {
