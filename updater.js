@@ -85,7 +85,7 @@ async function addDeployKey() {
 }
 
 async function addChanges() {
-  const { stdout } = await exec("git add wallets.json");
+  const { stdout } = await exec("git add wallets.json package.json");
   console.log(stdout);
 }
 
@@ -169,7 +169,7 @@ async function publish() {
     throw new Error("Something went wrong authenticating you on npm - Check your NPM_TOKEN validity");
   }
 
-  const { stdout, stderr } = exec("npm publish");
+  const { stdout } = await exec("npm publish");
   console.log(stdout);
   return stdout;
 }
