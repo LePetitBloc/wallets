@@ -95,7 +95,7 @@ async function commit(message) {
 }
 
 async function tag(message) {
-  const { stdout } = await exec("git tag " + manifest.version + "-m " + message);
+  const { stdout } = await exec("git tag " + manifest.version + " -m \" " + message + "\"");
   console.log(stdout);
 }
 
