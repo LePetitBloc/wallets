@@ -17,6 +17,7 @@ class Version {
 
   static fromVersionString(versionString) {
     if (typeof versionString === "string") {
+      versionNumberRegexp.lastIndex = 0;
       let regexpResult = versionNumberRegexp.exec(versionString);
       if (regexpResult) {
         return new Version(regexpResult);
@@ -64,7 +65,7 @@ class Update {
       await push();
       await publish();
     } else {
-      console.log("Wallets are up to date");
+      console.log("Wallets are up to date.");
     }
 
     console.log("--- Wallet updater ended at " + new Date() + "--");
@@ -94,7 +95,7 @@ async function commit(message) {
 }
 
 async function tag(message) {
-  const { stdout } = await exex("git tag " + manifest.version + "-m " + message);
+  const { stdout } = await exec("git tag " + manifest.version + "-m " + message);
   console.log(stdout);
 }
 
@@ -150,15 +151,12 @@ async function checkForUpdates(wallet, identifier) {
 }
 
 function findCurrentVersion(wallet, identifier) {
-  if (wallet.tag) {
-    let regexpResult = versionNumberRegexp.exec(wallet.tag);
-    if (regexpResult) {
-      return new Version(regexpResult);
-    }
+  try {
+    return Version.fromVersionString(wallet.tag);
+  }catch (e) {
+    console.warn("Can't determined current version for wallet : " + identifier + " missing tag");
+    return null;
   }
-
-  console.warn("Can't determined current version for wallet : " + identifier + " missing tag");
-  return null;
 }
 
 async function publish() {
@@ -220,6 +218,7 @@ function versionsSorter(a, b) {
 function parseVersionsTags(tagLists) {
   const versions = [];
   let version = {};
+  versionNumberRegexp.lastIndex = 0;
   while ((version = versionNumberRegexp.exec(tagLists))) {
     versions.push(new Version(version));
   }
