@@ -1,55 +1,114 @@
-require('dotenv').config();
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+require("dotenv").config();
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
 const versionNumberRegexp = /([vV])?([0-9]{1,2})\.([0-9]{1,2})(?:\.([0-9]{1,2}))?(?:\.([0-9]{1,2}))?[\n|\s]?/g;
-const wallets = require('./wallets');
-const writeFile = util.promisify(require('fs').writeFile);
+const wallets = require("./wallets");
+const writeFile = util.promisify(require("fs").writeFile);
+const manifest = require("./package");
+
+class Version {
+  constructor(versionRegexpResult) {
+    this.prefix = versionRegexpResult[1] || "";
+    this.major = parseInt(versionRegexpResult[2]);
+    this.minor = parseInt(versionRegexpResult[3]);
+    this.patch = versionRegexpResult[4] ? parseInt(versionRegexpResult[4]) : null;
+    this.fourth = versionRegexpResult[5] ? parseInt(versionRegexpResult[5]) : null;
+  }
+
+  static fromVersionString(versionString) {
+    if (typeof versionString === "string") {
+      let regexpResult = versionNumberRegexp.exec(versionString);
+      if (regexpResult) {
+        return new Version(regexpResult);
+      }
+    }
+
+    throw new Error("Can't parse version string : syntax error");
+  }
+
+  toString() {
+    let string = this.prefix + this.major + "." + this.minor;
+    string += this.patch !== null ? "." + this.patch : "";
+    string += this.fourth !== null ? "." + this.fourth : "";
+    return string;
+  }
+}
+
+class Update {
+  constructor(walletIdentifier, from, to) {
+    this.walletIdentifier = walletIdentifier;
+    this.from = from;
+    this.to = to;
+  }
+
+  toString() {
+    return "updated " + this.walletIdentifier + " from " + this.from.toString() + " to " + this.to.toString();
+  }
+}
 
 (async function() {
   try {
-    console.log('--- Wallet updater launched at ' + new Date() + '--');
+    console.log("--- Wallet updater launched at " + new Date() + "--");
     let updates = await checkAllForUpdates();
-    await updateFile(updates);
-    await addDeployKey();
-    await addChanges();
-    await commit(buildCommitMessage(updates));
-    await push();
-    console.log('--- Wallet updater ended at ' + new Date() + '--');
+
+    if (updates.filter(o => { return o !== null; }).length > 0) {
+      await updateFile(updates);
+      await updatePatchNumber();
+
+      const commitMessage = buildCommitMessage(updates);
+
+      await addDeployKey();
+      await addChanges();
+      await commit(commitMessage);
+      await tag(commitMessage);
+      await push();
+      await publish();
+    } else {
+      console.log("Wallets are up to date");
+    }
+
+    console.log("--- Wallet updater ended at " + new Date() + "--");
   } catch (e) {
     console.error(e);
   }
 })();
 
+
 async function addDeployKey() {
   if (!process.env.deploy_key) {
-    throw new Error('Environment variable deploy_key is not set - cannot send modifications to server.');
+    throw new Error("Environment variable deploy_key is not set - cannot send modifications to server.");
   }
-  const { stdout, stderr } = await exec('eval "$(ssh-agent -s)" && echo $deploy_key | ssh-add -');
+  const { stdout, stderr } = await exec("eval \"$(ssh-agent -s)\" && echo $deploy_key | ssh-add -");
   console.log(stdout);
   console.log(stderr);
 }
 
 async function addChanges() {
-  const { stdout } = await exec('git add wallets.json');
+  const { stdout } = await exec("git add wallets.json");
   console.log(stdout);
 }
 
 async function commit(message) {
-  const { stdout } = await exec('git commit -m "' + message + '"');
+  const { stdout } = await exec("git commit -m \"" + message + "\"");
+  console.log(stdout);
+}
+
+async function tag(message) {
+  const { stdout } = await exex("git tag " + manifest.version + "-m " + message);
   console.log(stdout);
 }
 
 async function push() {
-  const { stderr } = await exec('git push origin HEAD');
+  const { stderr } = await exec("git push --follow-tags origin HEAD");
   console.log(stderr);
-  console.log('Updated wallet.json successfully');
+  console.log("Updated wallet.json successfully");
 }
 
 function buildCommitMessage(updates) {
-  let commitMessage = 'Update wallet.json\n\n';
+  let commitMessage = "Update wallet.json\n\n";
   updates.forEach(update => {
     if (update) {
-      commitMessage += update.toString() + '\n';
+      commitMessage += update.toString() + "\n";
     }
   });
   return commitMessage;
@@ -61,7 +120,7 @@ async function updateFile(updates) {
       wallets[update.walletIdentifier].tag = update.to.toString();
     }
   });
-  return writeFile('./wallets.json', JSON.stringify(wallets, null, '  '));
+  return writeFile("./wallets.json", JSON.stringify(wallets, null, "  "));
 }
 
 async function checkAllForUpdates() {
@@ -78,7 +137,7 @@ async function checkForUpdates(wallet, identifier) {
   const tags = await listRemoteTags(wallet.repository);
   let versions = parseVersionsTags(tags);
   const currentVersion = findCurrentVersion(wallet, identifier);
-  if(currentVersion) {
+  if (currentVersion) {
     versions = versions.filter(superiorVersionsFilter(currentVersion));
     versions = versions.sort(versionsSorter);
 
@@ -98,9 +157,33 @@ function findCurrentVersion(wallet, identifier) {
     }
   }
 
-  console.warn("Can't determined current version for wallet : " + identifier + ' missing tag');
+  console.warn("Can't determined current version for wallet : " + identifier + " missing tag");
   return null;
 }
+
+async function publish() {
+  if (!process.env.NPM_TOKEN) {
+    throw new Error("Environment variable NPM_TOKEN is not set - cannot publish package.");
+  }
+  try {
+    await exec("npm whoami");
+  } catch (e) {
+    throw new Error("Something went wrong authenticating you on npm - Check your NPM_TOKEN validity");
+  }
+
+  const { stdout, stderr } = exec("npm publish");
+  console.log(stdout);
+  return stdout;
+}
+
+async function updatePatchNumber() {
+  const currentVersion = Version.fromVersionString(manifest.version);
+  currentVersion.patch += 1;
+
+  manifest.version = currentVersion.toString();
+  return writeFile("./package.json", JSON.stringify(manifest, null, "  "));
+}
+
 
 function superiorVersionsFilter(currentVersion) {
   return version => {
@@ -144,35 +227,8 @@ function parseVersionsTags(tagLists) {
 }
 
 async function listRemoteTags(remote) {
-  const { stdout } = await exec('git ls-remote --tags ' + remote);
+  const { stdout } = await exec("git ls-remote --tags " + remote);
   return stdout;
 }
 
-class Version {
-  constructor(versionRegexpResult) {
-    this.prefix = versionRegexpResult[1] || '';
-    this.major = parseInt(versionRegexpResult[2]);
-    this.minor = parseInt(versionRegexpResult[3]);
-    this.patch = versionRegexpResult[4] ? parseInt(versionRegexpResult[4]) : null;
-    this.fourth = versionRegexpResult[5] ? parseInt(versionRegexpResult[5]) : null;
-  }
 
-  toString() {
-    let string = this.prefix + this.major + '.' + this.minor;
-    string += this.patch !== null ? '.' + this.patch : '';
-    string += this.fourth !== null ? '.' + this.fourth : '';
-    return string;
-  }
-}
-
-class Update {
-  constructor(walletIdentifier, from, to) {
-    this.walletIdentifier = walletIdentifier;
-    this.from = from;
-    this.to = to;
-  }
-
-  toString() {
-    return 'updated ' + this.walletIdentifier + ' from ' + this.from.toString() + ' to ' + this.to.toString();
-  }
-}
